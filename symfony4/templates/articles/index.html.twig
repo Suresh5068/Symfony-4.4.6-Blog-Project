@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block title %}Symfony Articles{% endblock %}
+{% block body %}
+{% if articles %}
+<table id="articles" class="table table-striped">
+<thead>
+<tr>
+<th>Articles Title</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for article in articles %}
+<tr>
+<td>{{ article.title }}</td>
+<td>
+<a href ="/article/{{ article.id }}" style="margin-left:750px;" class ="btn btn-success">Show </a>
+<a href ="/article/edit/{{ article.id }}" style="margin-left:5px;" class ="btn btn-secondary" onclick= "return onClickFunc()">Edit</a>
+<a href ="/article/delete/{{ article.id }}" style="margin-left:5px;" class="btn btn-danger delete-article" data-id="{{ article.id }}" onclick= "return onClickFunc();">Delete</a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% else %}
+<p> No Articles TO Display</p>
+{% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="/js/main.js"></script>
+{% endblock %}
